@@ -1,0 +1,9 @@
+mixedFixedValueSlip/mixedFixedValueSlipFvPatchFields.C
+U/maxwellSlipUFvPatchVectorField.C
+T/smoluchowskiJumpTFvPatchScalarField.C
+U/gokcenSlipUFvPatchVectorField.C
+T/gokcenJumpTFvPatchScalarField.C
+rho/fixedRhoFvPatchScalarField.C
+p/subsonicSupersonicPressureOutletFvPatchScalarField.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyVLMFoam
