@@ -27,8 +27,8 @@ While the thermophysics of H2O steam at low pressures is not dramatically differ
 During my thesis I also implemented a simple table-look-up method for the thermodynamics of high-pressure steam. If I find some time, I will clean it up and add it here.
 
 Regardless of whether you use the included thermodynamic package or one of your own construction, you should keep in mind to check:
--> that your chosen EoS and the rest of thermodynamic relations are thermodynamically consistent with each other and
--> that your EOS exhibits thermodynamic stability at the region of the phase diagram that is of interest to your case.
+l. that your chosen EoS and the rest of thermodynamic relations are thermodynamically consistent with each other and
+l. that your EOS exhibits thermodynamic stability at the region of the phase diagram that is of interest to your case.
 
 
 ## Custom boundary conditions
@@ -36,9 +36,9 @@ Regardless of whether you use the included thermodynamic package or one of your 
 Due to some particularities in the flow cases I was treating, I have also implemented a couple of custom boundary conditions (BCs), which you can find in the respective folder in the solver. Unless you are treating similar flow physics, these boundary conditions are probably irrelevant to your work and you may ignore this section.
 
 I mentioned earlier that I wrote this solver because I needed to check for condensation inside micronozzles. The gaseous flow in these minute devices exhibits (at least) three complications from a modelling perspective:
--> Extremely rapid expansions that cause instabilities in the numerics of "rhoCentralFoam"
--> A portion of the flow domain downstream of the nozzle outlet has to be included for the flow solution to be realistic [5]. This means that "rhoCentralFoam", an explicit solver, has to compute a flow that goes from subsonic in the nozzle convergent to supersonic in the nozzle divergent and back to subsonic at the far outlet. Since the solver has not really been designed for that, it poses problems in the realisticity of the solution and the solution speed. 
--> A small degree of rarefaction in the flow, especially near the nozzle exit.
+l. Extremely rapid expansions that cause instabilities in the numerics of "rhoCentralFoam"
+l. A portion of the flow domain downstream of the nozzle outlet has to be included for the flow solution to be realistic [5]. This means that "rhoCentralFoam", an explicit solver, has to compute a flow that goes from subsonic in the nozzle convergent to supersonic in the nozzle divergent and back to subsonic at the far outlet. Since the solver has not really been designed for that, it poses problems in the realisticity of the solution and the solution speed. 
+l. A small degree of rarefaction in the flow, especially near the nozzle exit.
 
 To partially alleviate the first two issues, I implemented a custom "subsonic-supersonic pressure outlet" boundary condition for the pressure. This was adapted from the work of Kraposhin [6]. To partially alleviate the last issue, I coded slip boundary conditions at the walls for the velocity and temperature, after the work of Gokcen [7]. 
 
@@ -46,9 +46,15 @@ To partially alleviate the first two issues, I implemented a custom "subsonic-su
 ## References
 
 [1] [Master thesis](https://repository.tudelft.nl/islandora/object/uuid%3Aabe34357-627e-4df4-92eb-73e590ab79a6?collection=education)
+
 [2] Moore, M. J., Walters, P. T., Crane, R. I., and Davidson, B. J. (1973). Predicting the fog-drop size inwet-steam turbines. InProceedings of the Conference on Wet Steam 4, Coventry, UK. Institution ofMechanical Engineers. Paper C37/73
+
 [3] Starzmann et al. (2018). Results of the international wet steam modeling project. Proceedings of the Institution of Mechanical Engineers, Part A: Journal of Power and Energy,232(5):550–570. DOI: 10.1177/0957650918758779
+
 [4] Greenshields, C. J., Weller, H. G., Gasparini, L., and Reese, J. M. (2009). Implementation of semi-discrete, non-staggered central schemes in a colocated, polyhedral, finite volume framework, forhigh-speed viscous flows.International Journal for Numerical Methods in Fluids 
+
 [5] Ivanov, M., Markelov, G., Ketsdever, A., and Wadsworth, D. (1999). Numerical study of cold gas mi-cronozzle flows. In 37th Aerospace Sciences Meeting and Exhibit. American Institute of Aeronautics and Astronautics. DOI: 10.2514/6.1999-166
+
 [6] Kraposhin, M., Bovtrikova, A., and Strijhak, S. (2015).   Adaptation of Kurganov-Tadmor nu-merical scheme for applying in combination with the PISO method in numerical simulation of flows in a wide range of mach numbers.Procedia Computer Science, 66:43–52.  DOI:10.1016/j.procs.2015.11.007
+
 [7] Gokcen, T., Maccormack, R., and Chapman, D. (1987). Computational fluid dynamics near the con-tinuum limit. In8th Computational Fluid Dynamics Conference. American Institute of Aeronauticsand Astronautics. DOI: 10.2514/6.1987-1115
