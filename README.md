@@ -27,8 +27,8 @@ While the thermophysics of H2O steam at low pressures is not dramatically differ
 During my thesis I also implemented a simple table-look-up method for the thermodynamics of high-pressure steam. If I find some time, I will clean it up and add it here.
 
 Regardless of whether you use the included thermodynamic package or one of your own construction, you should keep in mind to check:
-l. that your chosen EoS and the rest of thermodynamic relations are thermodynamically consistent with each other and
-l. that your EOS exhibits thermodynamic stability at the region of the phase diagram that is of interest to your case.
+* that your chosen EoS and the rest of thermodynamic relations are thermodynamically consistent with each other and
+* that your EOS exhibits thermodynamic stability at the region of the phase diagram that is of interest to your case.
 
 
 ## Custom boundary conditions
@@ -36,9 +36,9 @@ l. that your EOS exhibits thermodynamic stability at the region of the phase dia
 Due to some particularities in the flow cases I was treating, I have also implemented a couple of custom boundary conditions (BCs), which you can find in the respective folder in the solver. Unless you are treating similar flow physics, these boundary conditions are probably irrelevant to your work and you may ignore this section.
 
 I mentioned earlier that I wrote this solver because I needed to check for condensation inside micronozzles. The gaseous flow in these minute devices exhibits (at least) three complications from a modelling perspective:
-l. Extremely rapid expansions that cause instabilities in the numerics of "rhoCentralFoam"
-l. A portion of the flow domain downstream of the nozzle outlet has to be included for the flow solution to be realistic [5]. This means that "rhoCentralFoam", an explicit solver, has to compute a flow that goes from subsonic in the nozzle convergent to supersonic in the nozzle divergent and back to subsonic at the far outlet. Since the solver has not really been designed for that, it poses problems in the realisticity of the solution and the solution speed. 
-l. A small degree of rarefaction in the flow, especially near the nozzle exit.
+* Extremely rapid expansions that cause instabilities in the numerics of "rhoCentralFoam"
+* A portion of the flow domain downstream of the nozzle outlet has to be included for the flow solution to be realistic [5]. This means that "rhoCentralFoam", an explicit solver, has to compute a flow that goes from subsonic in the nozzle convergent to supersonic in the nozzle divergent and back to subsonic at the far outlet. Since the solver has not really been designed for that, it poses problems in the realisticity of the solution and the solution speed. 
+* A small degree of rarefaction in the flow, especially near the nozzle exit.
 
 To partially alleviate the first two issues, I implemented a custom "subsonic-supersonic pressure outlet" boundary condition for the pressure. This was adapted from the work of Kraposhin [6]. To partially alleviate the last issue, I coded slip boundary conditions at the walls for the velocity and temperature, after the work of Gokcen [7]. 
 
