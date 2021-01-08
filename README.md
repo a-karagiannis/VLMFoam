@@ -30,7 +30,7 @@ During my thesis I also implemented a simple table-look-up method for the thermo
 
 Regardless of whether you use the included thermodynamic package or one of your own construction, you should keep in mind to check:
 * that your chosen EoS and the rest of thermodynamic relations are thermodynamically consistent with each other and
-* that your EOS exhibits thermodynamic stability at the region of the phase diagram that is of interest to your case.
+* that your EoS exhibits thermodynamic stability at the region of the phase diagram that is of interest to your case.
 
 
 ## Custom boundary conditions
